@@ -11,7 +11,7 @@
   @if (auth()->guard('mobile')->check())
   <div class="d-flex justify-content-between">
     <div>
-      <p class="text-light">Selamat Bekerja</p>
+      <p class="text-light description">Selamat Bekerja,</p>
       <h2 class="text-light">{{ auth()->guard('mobile')->user()->Operator }}</h2>
     </div>
     <form action="/logout" method="POST" class="my-auto">

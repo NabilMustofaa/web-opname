@@ -36,4 +36,4 @@ Route::group([], function () {
     Route::post('/login', [MobileController::class, 'authenticate']);
     Route::post('/logout', [MobileController::class, 'logout']);
 });
-Route::get('/{keyword}/',[MobileController::class, 'index'])->name('mobile.index')->middleware('auth:mobile');
+Route::get('/{token}/',[MobileController::class, 'index'])->name('mobile.index')->middleware('auth:mobile');

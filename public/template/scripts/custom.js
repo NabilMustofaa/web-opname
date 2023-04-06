@@ -83,7 +83,6 @@ $(document).ready(function(){
         $.fn.hideMenu = function() {$(this).removeClass('menu-active'); $('#footer-bar').removeClass('footer-menu-hidden');$('.menu-hider').removeClass('menu-active');}; 
         
         //Add your programatically triggered menus here
-        
     
         //Menu Required Variables
         function menuFunctions(){

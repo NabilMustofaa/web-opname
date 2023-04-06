@@ -1,12 +1,12 @@
 console.log("login.js");
 
 let operator = $("#Operator");
-let submit = $("#submit-keyword");
+let submit = $("#submit-token");
 let detail = $("#card-detail");
 
 submit.on("click", function () {
-    let keyword = $("#Keyword");
-    let value = keyword.val();
+    let token = $("#token");
+    let value = token.val();
     $.ajax({
         url: `/api/opname/${value}/users`,
         type: "GET",
@@ -42,9 +42,9 @@ submit.on("click", function () {
 
 operator.on("change", function () {
     let selected = $(this).val();
-    let keyword = $("#keyword").val();
+    let token = $("#token").val();
     console.log($("#login"));
     $("#login").on("click", function () {
-        window.location.href = `${keyword}/${selected}`;
+        window.location.href = `${token}/${selected}`;
     });
 });

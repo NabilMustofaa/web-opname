@@ -20,4 +20,4 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-Route::get('/opname/{keyword}/users', [OpnameUserAPI::class, 'show']);
+Route::get('/opname/{token}/users', [OpnameUserAPI::class, 'show']);

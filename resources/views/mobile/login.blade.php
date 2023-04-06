@@ -14,10 +14,10 @@
                 </p>
                 <div class="input-style input-style-2 input-required mt-5">
                     <span class="color-highlight">Token</span>
-                    <input class="form-control input-light" type="text" name="Keyword" id="Keyword"
+                    <input class="form-control input-light" type="text" name="Token" id="token"
                         placeholder="Masukkan Token">
                 </div>
-                <button type="button" id="submit-keyword"
+                <button type="button" id="submit-token"
                     class="btn btn btn-border btn-m btn-full mb-3 rounded-sm text-uppercase font-900 border-blue1-dark color-blue1-dark bg-theme col-12">SUBMIT</button>
             </div>
         </div>
@@ -72,8 +72,8 @@
     </form>
     {{-- <form action="/login" method="POST">
     @csrf
-    <input type="text" name="Keyword" id="Keyword" placeholder="Input Keyword">
-    <button type="button" id="search-keyword">Search</button>
+    <input type="text" name="token" id="token" placeholder="Input token">
+    <button type="button" id="search-token">Search</button>
     <input type="hidden" id="TaskId" name="TaskId">
     <select name="Operator" id="Operator">
       <option>Select User</option>

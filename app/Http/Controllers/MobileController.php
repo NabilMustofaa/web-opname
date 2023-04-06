@@ -6,6 +6,7 @@ use App\Models\StockCountTask;
 use App\Models\StockCountUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class MobileController extends Controller
 {
@@ -26,7 +27,7 @@ class MobileController extends Controller
         ]);
         $credentials['password'] = "";
 
-        $TaskId = StockCountTask::where('Keyword', $request->Keyword)->first()->Id;
+        $TaskId = StockCountTask::where('Token', $request->Token)->first()->Id;
 
         $credentials['TaskId'] = $TaskId;
 
@@ -34,7 +35,7 @@ class MobileController extends Controller
             $request->session()->regenerate();
             
             // dd(auth()->guard('mobile')->user());
-            return redirect()->intended($request->Keyword);
+            return redirect()->intended($request->Token);
         }
         return back()->with('error','Invalid Username or Password');
     }
@@ -50,8 +51,13 @@ class MobileController extends Controller
         return redirect('/');
     }
 
-    public function index(){
-        return view('mobile.index');
+    public function index($token)
+    {   
+        $Task = DB::table('StockCountTask')->where('Token', $token)->first();
+
+        $History = DB::table('StockCountResult')->where('Operator', auth()->guard('mobile')->user()->Operator)->groupBy('BinLoc')->get();
+
+        return view('mobile.index', compact('Task'));
     }
 
 
