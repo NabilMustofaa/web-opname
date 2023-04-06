@@ -15,7 +15,6 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
     ],
 
     /*
@@ -40,6 +39,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'mobile' => [
+            'driver' => 'session',
+            'provider' => 'IAuser',
+        ],
     ],
 
     /*
@@ -62,8 +65,13 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Setting::class,
         ],
+        'IAuser' =>[
+            'driver' => 'eloquent',
+            'model' => App\Models\StockCountUser::class,
+        ]
+        
 
         // 'users' => [
         //     'driver' => 'database',

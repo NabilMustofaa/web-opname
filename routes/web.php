@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\DesktopController;
+use App\Http\Controllers\MobileController;
+use App\Http\Controllers\OpnameController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+route::group(['prefix' => 'admin','middleware'=> 'auth'], function () {
+    Route::get('/', [DesktopController::class, 'index']);
+    Route::get('/opname', [OpnameController::class, 'create']);
+    Route::get('/opname/users', [OpnameController::class, 'users']);
 });
+
+route::group(['prefix' => 'admin','middleware'=> 'guest'], function () {
+    Route::get('/login', [DesktopController::class, 'login']);
+    Route::post('/login', [DesktopController::class, 'authenticate']);
+    Route::get('/logout', [DesktopController::class, 'logout']);
+});
+
+Route::group([], function () {
+    Route::get('/', [MobileController::class, 'home'])->name('login');
+    Route::get('/login', [MobileController::class, 'login']);
+    Route::post('/login', [MobileController::class, 'authenticate']);
+    Route::post('/logout', [MobileController::class, 'logout']);
+});
+Route::get('/{keyword}/',[MobileController::class, 'index'])->name('mobile.index')->middleware('auth:mobile');
